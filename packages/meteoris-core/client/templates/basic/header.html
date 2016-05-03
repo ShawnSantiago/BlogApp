@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{pathFor 'sitesIndex'}}"><img src="/svg/logo.svg"/> {{app "name"}}</a>
+                <a class="navbar-brand" href="{{pathFor 'sitesIndex'}}">Blog App</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -43,14 +43,14 @@
                         <a href="{{pathFor 'usersLogin'}}">{{_ "Login"}}</a>
                         {{/if}}
                     </li>
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{meteorisI18nCurrentLanguage}}<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                         {{#each meteorisI18nLanguages}}
                            <li><a href="#" class="lang" data-lang="{{code}}">{{name}} ({{code}})</a></li>
                         {{/each}}
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

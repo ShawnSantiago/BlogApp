@@ -5,10 +5,6 @@ SitesController = MeteorisController.extend({
 
         this.subscription = this.subs.subscribe('posts', this.getCriteria(), sort);
     },
-    /* event searching data by user input with parameter */
-    search: function(t) {
-        Router.go(Router.current().route.getName(), {limit: this.limit()}, {query: "q=" + t.find('#search').value});
-    },
     /* @override getCriteria */
     getCriteria: function() {
         var search = this.params.query.q ? this.params.query.q : "";
@@ -39,5 +35,8 @@ SitesController = MeteorisController.extend({
                 model: this._loadModel(this.getId()),
             }
         });
+    },
+    _loadModel: function(_id) {
+        return Posts.findOne(_id);
     },
 });

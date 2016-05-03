@@ -33,7 +33,7 @@ if (Meteor.settings.public.APP_NAME                 == undefined)
     Meteor.settings.public.APP_NAME                 = "Meteoris";
 
 if (Meteor.settings.public.USE_MUGEN_GENERATOR      == undefined)
-    Meteor.settings.public.USE_MUGEN_GENERATOR      = true;
+    Meteor.settings.public.USE_MUGEN_GENERATOR      = false;
 
 if (Meteor.settings.public.DEVELOPMENT_MAIN_SERVER  == undefined)
     Meteor.settings.public.DEVELOPMENT_MAIN_SERVER  = "http://localhost:3000";

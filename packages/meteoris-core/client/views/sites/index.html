@@ -1,5 +1,49 @@
 <template name="sitesIndex">
     <div class="container">
-      {{> UI.dynamic template=index_i18n}}
+        <!--Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li><a href="{{pathFor 'sitesIndex'}}">{{_ "Home"}}</a></li>
+        </ol>
+        
+        <h2>{{welcomeMessage}}</h2>
+        
+        {{#if isEmpty}}
+        <p>No Data Found</p>
+        {{else}}
+        <div class=" table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        
+                        <th id="btnSortTitle" class="{{meteorisGridViewSortClass 'title'}}">Title</th>                    
+                        <th>Photo</th>                    
+                        <th>Creator</th>                    
+                        <th><b>Content</b></th>
+                        <th style="width: 30px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each models}}
+                    <tr>
+                        <td>{{title}}</td>
+                        <td><img class="image" src="{{#if image}}{{app "baseUrl"}}{{image.url}}{{else}}{{app "baseUrl"}}/images/noimage.jpg{{/if}}"/></td>
+                        <td>{{createdUser.profile.name}}</td>
+                        
+                        <td>{{content}}</td>
+                        <td>
+                            <a href="{{pathFor 'postsView'}}" class="btn btn-default"><i class="glyphicon glyphicon-eye-open"></i></a>
+                        </td>
+                    </tr>  
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        {{#if hasMore}}
+        <a class="btn btn-default load-more btn-block" href="{{hasMore}}">{{_ "Load More"}} ...</a>
+        {{/if}}
+        {{#unless ready}}
+        {{> spinner}}
+        {{/unless}}
+        {{/if}}
     </div>
 </template>
