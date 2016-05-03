@@ -8,16 +8,43 @@
         
         <h2>{{welcomeMessage}}</h2>
         
-        <div class="alert alert-success">Congratulations!  You have successfully created your Meteoris Backend App.
+        {{#if isEmpty}}
+        <p>No Data Found</p>
+        {{else}}
+        <div class=" table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 30px;"><input type="checkbox" id="checkAll"/></th>
+                        <th id="btnSortTitle" class="{{meteorisGridViewSortClass 'title'}}">Title</th>                    
+                        <th>Foto</th>                    
+                        <th>Created by</th>                    
+                        <th style="width: 145px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each models}}
+                    <tr>
+                        <td><input type="checkbox" class="checkAll" value="{{_id}}"/></td>
+                        <td>{{title}}</td>
+                        <td><img class="image" src="{{#if image}}{{app "baseUrl"}}{{image.url}}{{else}}{{app "baseUrl"}}/images/noimage.jpg{{/if}}"/></td>
+                        <td>{{createdUser.profile.name}}</td>
+                        <td>
+                            <a href="{{pathFor 'postsView'}}" class="btn btn-default"><i class="glyphicon glyphicon-eye-open"></i></a>
+                            <a href="{{pathFor 'postsUpdate'}}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
+                            <a id="btnRemove" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
-        
-        <p>You can check the <a href="{{pathFor 'postsIndex'}}">{{_ "Posts"}}</a> demo to quickly get started with Meteoris.
-        </p>
-
-        <p>For further details, please read our <a href="http://avocadofloat.com/publicDocs/index/Ku9o2ZJS9k3nPZtzy" target="_blank">documentation</a>.
-        </p>
-
-        <p>Feel free to email me <a href="mailto:radiegtya@yahoo.co.id">radiegtya@yahoo.co.id</a>, or, if you find any bugs or issues, please report them at <a href="https://github.com/radiegtya/meteoris" target="_blank">https://github.com/radiegtya/meteoris.</a>
-        </p>
+        {{#if hasMore}}
+        <a class="btn btn-default load-more btn-block" href="{{hasMore}}">{{_ "Load More"}} ...</a>
+        {{/if}}
+        {{#unless ready}}
+        {{> spinner}}
+        {{/unless}}
+        {{/if}}
     </div>
 </template>

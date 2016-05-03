@@ -5,3 +5,6 @@
   });
 
 })();
+
+Template.sitesIndex.helpers({
+});
